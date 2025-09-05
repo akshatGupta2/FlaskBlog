@@ -39,7 +39,7 @@ def get_creds():
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file("credentials.json", SCOPES)
-            creds = flow.run_local_server(port=5000, access_type="offline", prompt="consent")
+            creds = flow.run_local_server(port=5500, prompt="consent")
         # Save the credentials for future use
         with open("token.json", "w") as token_file:
             token_file.write(creds.to_json())
