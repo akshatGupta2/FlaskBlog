@@ -5,7 +5,7 @@ services:
     runtime: python
     buildCommand: pip install -r requirements.txt
     plan: free
-    startCommand: gunicorn app:create_app() --bind 0.0.0.0:$PORT
+    startCommand: gunicorn run:app --bind 0.0.0.0:$PORT
     envVars:
     - key: PORT
       value: 8000
