@@ -14,9 +14,9 @@ class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(20), unique=True, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
+    email = db.Column(db.String(20), unique=True, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default="fb96dc9d77bfdf8c.jpg")
-    paswd = db.Column(db.String(60), nullable=False)
+    paswd = db.Column(db.String(120), nullable=False)
     posts = db.relationship('Post', backref='author', lazy=True)
     
     def  get_reset_token(self):
@@ -40,7 +40,7 @@ class User(db.Model, UserMixin):
 
 class Post(db.Model):
     id=db.Column(db.Integer, primary_key=True)
-    title=db.Column(db.String(50), nullable=False)
+    title=db.Column(db.TEXT, nullable=False)
     date=db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     content=db.Column(db.Text, nullable=True)
     user_id=db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
