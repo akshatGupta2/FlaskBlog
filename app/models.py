@@ -10,6 +10,8 @@ def login_user(user_id):
 
 
 class User(db.Model, UserMixin):
+    __tablename__ = 'users'
+
     id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
@@ -41,7 +43,7 @@ class Post(db.Model):
     title=db.Column(db.String(50), nullable=False)
     date=db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     content=db.Column(db.Text, nullable=True)
-    user_id=db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id=db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     
     def __repr__(self):
         return f"Post('{self.title}', '{self.date}')"
