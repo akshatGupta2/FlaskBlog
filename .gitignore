@@ -1,5 +1,6 @@
-.venv
 __pycache__
 credentials.json
 token.json
 sqlite_dump.sql
+.venv
+.venv
