@@ -112,7 +112,7 @@ def reset_password(token:str):
     form=ResetPassword()
     if form.validate_on_submit():
         hashed_pawd = bcrypt.generate_password_hash(form.paswd.data)
-        user.paswd = hashed_pawd
+        user.paswd = hashed_pawd.decode('utf-8')
         db.session.commit()
         flash(f"Password has been updated!", "success")
         return redirect(url_for("users.login_func"))
